@@ -1688,5 +1688,4 @@ Estos son los fundamentos esenciales para construir microservicios robustos con 
 
 ---
 
-**Duración estimada:** 3 horas  
-**Siguiente tema:** Desarrollo de Microservicios con .NET
+
