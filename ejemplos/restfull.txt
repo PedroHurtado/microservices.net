@@ -1,0 +1,218 @@
+Catalogo de pizzas
+
+pizza={
+  id,
+  name,
+  description,
+  url,
+  price->suma costo de los ingredientes + 20 % beneficios
+  ingredientes:[{id,name,costo}]
+}
+
+RestFull
+
+1. Buenas practicas en las urls
+    Servidor:http://localhost:8080
+    /pizza->No
+
+    1.1 Debo de pluralizar el dominio
+        /pizzas
+    1.2 Mi url no debe de exponer acciones
+
+        /pizzas/create(no)-> /pizzas verbo http POST
+        /pizzas/update(no)   /pizzas verbo http PUT
+    1.3 No exponer formatos en mi url
+        /pizzas.json 
+        /pizzas.xml
+        
+        https://developer.mozilla.org/en-US/docs/Web/HTTP/Guides/MIME_types/Common_types
+
+        accept:"application/json"
+        content-type:"application/json"
+    1.4 versionado de mi api
+        /v1/pizzas
+2. Crud
+
+2.1 Create
+
+path:/pizzas
+methodo:POST
+request
+    headers
+        content-type:"application/json"
+    body
+        {
+          name
+          description
+          url
+          ingredientes:[{id},{id},{id}]  
+        }
+response
+    headers
+        content-type:'application/json'
+    body
+        {
+            id,name,price,url,description,
+            ingredients:[
+                {id,neme}
+            ]
+        }
+status code
+    https://developer.mozilla.org/en-US/docs/Web/HTTP/Reference/Status#successful_responses
+ok
+    201    
+error
+    validación
+        400 /pizzas/1   /pizzas
+        422 validación
+        409 conflict
+    autorización autenticacion
+        401->No autenticado
+        403->No tengo permisos        
+    500
+        retry
+
+    {
+        path
+        messaje
+        status
+        timestamp
+    }
+
+update:
+path:/pizzas/{id}
+methodo:PUT|PATCH
+request
+    headers
+        content-type:"application/json"
+    body
+        {
+          name
+          description
+          url
+          ingredientes:[{id},{id},{id}]  
+        }
+response
+    headers
+        content-type:'application/json'
+    body
+        {
+            id,name,price,url,description,
+            ingredients:[
+                {id,neme}
+            ]
+        }
+status code
+    https://developer.mozilla.org/en-US/docs/Web/HTTP/Reference/Status#successful_responses
+ok
+    200
+    204->no content    
+error
+    validación
+        400 /pizzas/1   /pizzas
+        422 validación
+        409 conflict
+        404 Not found
+    autorización autenticacion
+        401->No autenticado
+        403->No tengo permisos        
+    500
+        retry
+
+    {
+        path
+        messaje
+        status
+        timestamp
+    }
+
+
+delete:
+path:/pizzas/{id}
+methodo:DELETE
+request    
+response    
+status code
+    https://developer.mozilla.org/en-US/docs/Web/HTTP/Reference/Status#successful_responses
+ok    
+    204->no content    
+error
+    validación
+        400 /pizzas/1   /pizzas        
+        404 Not found
+    autorización autenticacion
+        401->No autenticado
+        403->No tengo permisos        
+    500
+        retry
+
+    {
+        path
+        messaje
+        status
+        timestamp
+    }
+
+GET(identidad por id):
+path:/pizzas/{id}
+methodo:GET
+request    
+        accept :'application/json'
+response   
+        content-type:'applicatio/json'
+        body:{}
+status code
+    https://developer.mozilla.org/en-US/docs/Web/HTTP/Reference/Status#successful_responses
+ok    
+    200
+error
+    validación
+        400 /pizzas/1   /pizzas        
+        404 Not found
+    autorización autenticacion
+        401->No autenticado
+        403->No tengo permisos        
+    500
+        retry
+
+    {
+        path
+        messaje
+        status
+        timestamp
+    }
+
+GET (collection de datos)
+path:/pizzas
+methodo:GET
+request    
+        accept :'application/json'
+response   
+        content-type:'applicatio/json'
+        body:[{}] | []
+status code
+    https://developer.mozilla.org/en-US/docs/Web/HTTP/Reference/Status#successful_responses
+ok    
+    200
+error
+    validación
+        400 /pizzas/1   /pizzas                
+    autorización autenticacion
+        401->No autenticado
+        403->No tengo permisos        
+    500
+        retry
+
+    {
+        path
+        messaje
+        status
+        timestamp
+    }
+
+querystring->/pizzas?name=carb&size=25&page=1&attributes=id,name,price
+
+proyeccion->select * from tabla
+            select id,name,price from tabla
+
+https://www.odata.org/
