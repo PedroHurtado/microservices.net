@@ -1,0 +1,83 @@
+1. Usuario PassWord
+    /auth/login
+        admin
+        secret
+    1.1 https
+    1.2 bcrypt
+2. Oauth
+    Se registra tu aplicacion en idp
+    Google
+    Twittter
+
+2.1    client_id
+    client_secret
+    redirect_uri  http://localhost:8080/github
+
+2.2
+    Form action=/login/github
+2.3
+    redirect a la url 
+
+    https://github.com/login/oauth/authorize?
+
+    1. El usuario no está autenticado
+    2. El usuario está auteticado
+    3. Es la primera vez que accede a la aplicacion
+
+    redirect_uri
+    scope
+    client_id
+2.4
+    client_id
+    client:secret
+    code
+    redirect_uri
+    scope
+
+    POST->Server->Server github
+
+    POST https://github.com/login/oauth/access_token
+
+    Accept: application/json
+    {
+        "access_token":"gho_16C7e42F292c6912E7710c838347Ae178B4a",
+        "scope":"repo,gist",
+        "token_type":"bearer"
+    }
+2.5 Llamar a la api de github para obtener el profile
+
+Authorization: Bearer OAUTH-TOKEN
+GET https://api.github.com/user
+
+2.6 Grabar en la bb.dd el usuario
+
+    Autenticar con token
+    Autenticar por cookies
+
+
+1. Cookies(csrf)
+    HttpOnly
+    Secure
+
+    https://developer.mozilla.org/en-US/docs/Web/HTTP/Reference/Headers/Set-Cookie
+    https://developer.mozilla.org/es/docs/Web/HTTP/Reference/Headers/Cookie
+
+    Applicación web
+2. Autorizathion: Bearer  xxxx.yyyy.zzz(JWT)
+                  Basic(csrf)  user:pwd
+
+                  jwt->3600
+                  /refresh
+
+        1. LocalStorage
+            Api Sincrona
+            Serializar y desealizar
+            No se puede acceder desde los workers    
+        2. IndexDb
+            Api Asincrona
+            Almacena objectos no serializa ni deserializa
+            Se puede acceder desde los workers
+
+        CSP->Cargar el html,css,js,fonts,media
+
+        https://www.w3.org/TR/CSP3/

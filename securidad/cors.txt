@@ -1,0 +1,32 @@
+Web->Fecht/Xhr
+    XmlHttpReqest
+    Fetch
+
+Origen->Destino y son diferentes
+
+Es el destino el que autorizar al origen
+
+Origin(Sourece)https://www.w3.org
+Destino()http://localhost:5239/ingredientes?Page=1&Size=25
+
+
+Origin
+
+CSRF
+
+Access-Control-Allow-Origin:*|dominio(white list)
+Access-Control-Allow-Credentials:true
+
+*->No se permiten cookies
+
+Access-Control-Max-Age:3600
+
+get
+post
+put
+delete
+patch
+head
+
+OPTIONS 2 REQUEST
+
