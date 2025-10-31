@@ -250,6 +250,10 @@ docker-compose ps
 
 # 9. Reiniciar el servicio
 docker-compose restart webapi
+
+# 10. Entrar al docker 
+# Entrar al servicio webapi
+docker-compose exec webapi bash
 ```
 
 ### Opción B: Usando Docker directamente
